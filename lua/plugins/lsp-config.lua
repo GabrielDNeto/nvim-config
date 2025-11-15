@@ -10,7 +10,7 @@ return {{
     opts = {
         auto_install = true
     },
-    ensure_installed = {'tsserver', "ts_ls", 'html', 'css', 'lua_ls', 'tailwindcss', 'eslint'}
+    ensure_installed = {'tsserver', "ts_ls", 'html', 'cssls', 'lua_ls', 'tailwindcss', 'eslint'}
 }, {
     "neovim/nvim-lspconfig",
     lazy = false,
@@ -26,7 +26,15 @@ return {{
             capabilities = capabilities
         }
 
-        vim.lsp.config["css"] = {
+        vim.lsp.config["cssls"] = {
+            capabilities = capabilities
+        }
+
+        vim.lsp.config["tailwindcss"] = {
+            capabilities = capabilities
+        }
+
+        vim.lsp.config["eslint"] = {
             capabilities = capabilities
         }
 
@@ -42,7 +50,7 @@ return {{
         }
 
         -- Habilita todos
-        vim.lsp.enable({"tsserver", "ts_ls", "solargraph", "html", "lua_ls"})
+        vim.lsp.enable({"tsserver", "ts_ls", "html", "cssls", "eslint", "tailwindcss", "lua_ls"})
 
         -- Keymaps
         vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
